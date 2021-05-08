@@ -1,5 +1,12 @@
 # Compiled class file
 *.class
+target/
+
+# IDEA project files
+.idea/
+*.iml
+*.ipr
+*.iws
 
 # Log file
 *.log

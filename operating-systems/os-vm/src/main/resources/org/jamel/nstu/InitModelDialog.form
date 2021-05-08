@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="InitModelDialog">
+  <grid id="ae16e" binding="contentPane" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
+    <constraints>
+      <xy x="31" y="55" width="558" height="367"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="94766" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <xy x="10" y="332" width="538" height="25"/>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <hspacer id="98af6">
+            <constraints>
+              <xy x="0" y="7" width="390" height="11"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+            </constraints>
+          </hspacer>
+          <grid id="9538f" row-count="1" column-count="2" same-size-horizontally="true" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <xy x="390" y="0" width="148" height="25"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="e7465" class="javax.swing.JButton" binding="buttonOK">
+                <constraints>
+                  <xy x="0" y="0" width="69" height="25"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1"/>
+                </constraints>
+                <properties>
+                  <text value="OK"/>
+                </properties>
+              </component>
+              <component id="5723f" class="javax.swing.JButton" binding="buttonCancel">
+                <constraints>
+                  <xy x="79" y="0" width="69" height="25"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1"/>
+                </constraints>
+                <properties>
+                  <text value="Cancel"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="968b0" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="5" bottom="10" right="10"/>
+        <constraints>
+          <xy x="10" y="10" width="241" height="317"/>
+          <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched" title="Задачи"/>
+        <children>
+          <grid id="bbc3" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <xy x="11" y="20" width="214" height="281"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <scrollpane id="7549b">
+                <constraints>
+                  <xy x="0" y="0" width="103" height="281"/>
+                  <grid row="0" column="0" row-span="4" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3">
+                    <preferred-size width="300" height="100"/>
+                  </grid>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="f5ba7" class="javax.swing.JTable" binding="table">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="c41d" class="javax.swing.JButton" binding="insertProcess">
+                <constraints>
+                  <xy x="113" y="0" width="101" height="25"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1"/>
+                </constraints>
+                <properties>
+                  <text value="Добавить"/>
+                </properties>
+              </component>
+              <component id="8f6b0" class="javax.swing.JButton" binding="removeProcess">
+                <constraints>
+                  <xy x="113" y="30" width="101" height="25"/>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1"/>
+                </constraints>
+                <properties>
+                  <text value="Удалить"/>
+                </properties>
+              </component>
+              <component id="5e03a" class="javax.swing.JButton" binding="removeAll">
+                <constraints>
+                  <xy x="113" y="60" width="101" height="25"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1"/>
+                </constraints>
+                <properties>
+                  <borderPainted value="true"/>
+                  <contentAreaFilled value="true"/>
+                  <defaultCapable value="true"/>
+                  <focusPainted value="true"/>
+                  <focusTraversalPolicyProvider value="false"/>
+                  <opaque value="true"/>
+                  <requestFocusEnabled value="true"/>
+                  <rolloverEnabled value="true"/>
+                  <text value="Удалить все"/>
+                </properties>
+              </component>
+              <vspacer id="cedce">
+                <constraints>
+                  <xy x="158" y="85" width="11" height="196"/>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+                </constraints>
+              </vspacer>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="36375" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <xy x="261" y="10" width="287" height="156"/>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched" title="Параметры по умолчанию"/>
+        <children>
+          <component id="6510e" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="132" width="183" height="14"/>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Время изменения рабочего набора:"/>
+            </properties>
+          </component>
+          <component id="64310" class="javax.swing.JSpinner" binding="diskInterval">
+            <constraints>
+              <xy x="221" y="74" width="60" height="22"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0">
+                <preferred-size width="60" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="95b5d" class="javax.swing.JSpinner" binding="workSetTime">
+            <constraints>
+              <xy x="221" y="128" width="60" height="22"/>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0">
+                <preferred-size width="60" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="9fe7c" class="javax.swing.JSpinner" binding="managerInterval">
+            <constraints>
+              <xy x="221" y="47" width="60" height="22"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0">
+                <preferred-size width="60" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="f1e2d" class="javax.swing.JSpinner" binding="numPages">
+            <constraints>
+              <xy x="221" y="20" width="60" height="22"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0">
+                <preferred-size width="60" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="dc401" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="24" width="151" height="14"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Количество страниц памяти:"/>
+            </properties>
+          </component>
+          <component id="6f1d4" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="51" width="99" height="14"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Квант менеджера:"/>
+            </properties>
+          </component>
+          <component id="8b192" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="78" width="72" height="14"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Квант диска:"/>
+            </properties>
+          </component>
+          <component id="4ba51" class="javax.swing.JSpinner" binding="k0">
+            <constraints>
+              <xy x="221" y="101" width="60" height="22"/>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0">
+                <preferred-size width="60" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="22b1e" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="105" width="205" height="14"/>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Коэффициент неравномерности (x100):"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="96b0f" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <xy x="261" y="171" width="287" height="156"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched" title="Подбираемые параметры"/>
+        <children>
+          <component id="3d69c" class="javax.swing.JSpinner" binding="workSetInterval">
+            <constraints>
+              <xy x="221" y="101" width="60" height="22"/>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0">
+                <preferred-size width="60" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="6ff17" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="24" width="181" height="14"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Время неиспользования страницы:"/>
+            </properties>
+          </component>
+          <component id="2da2" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="51" width="102" height="14"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Квант диспетчера:"/>
+            </properties>
+          </component>
+          <component id="44644" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="78" width="78" height="14"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Квант памяти:"/>
+            </properties>
+          </component>
+          <component id="c892c" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="105" width="128" height="14"/>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Квант рабочего набора:"/>
+            </properties>
+          </component>
+          <component id="424da" class="javax.swing.JSpinner" binding="memoryInterval">
+            <constraints>
+              <xy x="221" y="74" width="60" height="22"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0">
+                <preferred-size width="60" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="1e959" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="132" width="115" height="14"/>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Алгоритм замещения:"/>
+            </properties>
+          </component>
+          <component id="75a06" class="javax.swing.JSpinner" binding="pageTime">
+            <constraints>
+              <xy x="221" y="20" width="60" height="22"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0">
+                <preferred-size width="60" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="c9adf" class="javax.swing.JSpinner" binding="processInterval">
+            <constraints>
+              <xy x="221" y="47" width="60" height="22"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0">
+                <preferred-size width="60" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="440d6" class="javax.swing.JComboBox" binding="algorithm">
+            <constraints>
+              <xy x="197" y="128" width="84" height="22"/>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="4" fill="1">
+                <preferred-size width="80" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
