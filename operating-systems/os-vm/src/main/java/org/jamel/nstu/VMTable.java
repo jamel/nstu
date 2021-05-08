@@ -20,14 +20,14 @@ public class VMTable {
         this.numPages = numPages;
         pages = new Page[numPages];
         for (int i = 0; i < numPages; i++)
-            pages[i] = new Page(Page.EMPTY, -1, -1);
+            pages[i] = new Page(Page.Status.EMPTY, -1, -1);
     }
 
     public void resize(int nPages) {
         numPages = nPages;
         pages = new Page[numPages];
         for (int i = 0; i < numPages; i++)
-            pages[i] = new Page(Page.EMPTY, -1, -1);
+            pages[i] = new Page(Page.Status.EMPTY, -1, -1);
     }
     
     public Page[] pages;

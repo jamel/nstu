@@ -46,19 +46,13 @@ public class MemoryStatPanel extends JPanel {
         public Object getValueAt(int rowIndex, int columnIndex) {
             Page p = simulator.table.pages[rowIndex];
             switch(columnIndex) {
-                case 0 : return String.valueOf(rowIndex);
-                case 1 :
-                    if (p.status == Page.EMPTY)
-                        return "EMPTY";
-                    else if (p.status == Page.FREE)
-                        return "FREE";
-                    else
-                        return "PRIVATE";
-                case 2 :
-                    if (p.nProcess == -1)
-                        return "---";
-                    return simulator.processes.get(p.nProcess).label;
-                case 3 : return String.valueOf(p.nPage);
+                case 0: return String.valueOf(rowIndex);
+                case 1: return p.status.name();
+                case 2:
+                    return p.nProcess == -1
+                        ? "---"
+                        : simulator.processes.get(p.nProcess).label;
+                case 3: return String.valueOf(p.nPage);
                 case 4: return String.valueOf(p.nCalls);
                 default:
                     return null;

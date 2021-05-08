@@ -36,10 +36,10 @@ public class VMTableView extends VMTable {
     public void draw(Graphics2D g) {
         Rectangle rect = new Rectangle(x1, y1, TABLE_WIDTH, pageHeight);
         for (int i = 0; i < numPages; i++) {
-            if (pages[i].status == Page.EMPTY)
+            if (pages[i].status == Page.Status.EMPTY)
                 g.setPaint(new Color(100, 100, 100));
             else {
-                if (pages[i].status == Page.PRIVATE) {
+                if (pages[i].status == Page.Status.PRIVATE) {
                     ProcessView p = processes.get(pages[i].nProcess);
                     g.setColor((p.selected ? Color.RED : Color.BLUE));
                     if (p.x + ProcessView.PAGE_WIDTH / 2 < screenSize.width / 2)

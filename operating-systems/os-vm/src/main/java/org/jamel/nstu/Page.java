@@ -8,8 +8,14 @@ package org.jamel.nstu;
  * To change this template use File | Settings | File Templates.
  */
 public class Page {
-    public Page(int stat, int proc, int page) {
-        status = stat;
+    enum Status {
+        EMPTY,
+        PRIVATE,
+        FREE,
+    }
+
+    public Page(Status status, int proc, int page) {
+        this.status = status;
         nProcess = proc;
         nPage = page;
     }
@@ -25,14 +31,10 @@ public class Page {
 
     public Page() {}
 
-    public int status;      // состояние страницы
-    public int nProcess;    // номер процесса
-	public int nPage;       // номер страницы процесса
-	public long	loadTime;   // время загрузки
-	public long	callTime;	// время последнего обращения
-	public int nCalls;      // количество обращений
-
-    public static final int EMPTY = 0;
-    public static final int PRIVATE = 1;
-    public static final int FREE = 2;
+    public Status status; // состояние страницы
+    public int nProcess;  // номер процесса
+	public int nPage;     // номер страницы процесса
+	public long	loadTime; // время загрузки
+	public long	callTime; // время последнего обращения
+	public int nCalls;    // количество обращений
 }

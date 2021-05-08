@@ -205,7 +205,6 @@ public class MonitorPanel extends JPanel {
         }
 
         public void run() {
-
             Thread me = Thread.currentThread();
 
             while (thread == me && !isShowing() || getSize().width == 0) {

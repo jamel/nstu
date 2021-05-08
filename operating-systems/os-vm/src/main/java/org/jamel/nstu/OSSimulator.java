@@ -3,8 +3,6 @@ package org.jamel.nstu;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
-//import java.lang.*;
-//import java.lang.Process;
 
 /**
  * Created by IntelliJ IDEA.
@@ -247,7 +245,7 @@ public class OSSimulator implements Runnable {
         int	vp;
         if (nAlgorithm < GLOBAL) {	// Локальное замещение - поиск неиспользуемых страниц
             for (int pp = 0; pp < numPages; pp++)
-                if (table.pages[pp].status == Page.PRIVATE) { // Страница в состоянии ЗАНЯТА
+                if (table.pages[pp].status == Page.Status.PRIVATE) { // Страница в состоянии ЗАНЯТА
                     int ts = table.pages[pp].nProcess;	// Фиксация номера задачи и номера
                     vp = table.pages[pp].nPage;	// виртуальной страницы
                     if (systemTime - table.pages[pp].callTime > Dpgswap)
@@ -292,7 +290,7 @@ public class OSSimulator implements Runnable {
             				// Поиск среди свободных страниц,
             for (pp = 0; pp < numPages; pp++)	// в которую ранее была загружена
                             // требуемая страница и еще не замещена
-                if ((table.pages[pp].status == Page.FREE) &&
+                if ((table.pages[pp].status == Page.Status.FREE) &&
                         (table.pages[pp].nProcess == currentProcessIndex) &&
                         (table.pages[pp].nPage == nPage)) break;
 
@@ -305,7 +303,7 @@ public class OSSimulator implements Runnable {
                 currentProcess.Wkset++;		// Увеличить РН задачи
                 table.pages[pp].nCalls++;		// Увеличить счетчик обращений
                 table.pages[pp].callTime = systemTime;	// Время последнего обращения
-                table.pages[pp].status = Page.PRIVATE;	// Состояние страницы - ЗАНЯТА
+                table.pages[pp].status = Page.Status.PRIVATE;	// Состояние страницы - ЗАНЯТА
                 numFreePages--;		// Уменьшить число свободных страниц
             }
             else {				// Страничный сбой - замещение
@@ -405,7 +403,7 @@ public class OSSimulator implements Runnable {
         int	phpg = process.pages[vp];	// Определение номера физической страницы
         process.pages[vp] = -1;	// Виртуальная страница - не загружена
         process.Wkset--;		// Уменьшить размер рабочего набора задачи
-        table.pages[phpg].status = Page.FREE;
+        table.pages[phpg].status = Page.Status.FREE;
         numFreePages++;			// Увеличить счетчик свободных страниц
     }
 
@@ -415,7 +413,7 @@ public class OSSimulator implements Runnable {
             			            // Поиск в физической памяти доступной
 
             for (npp = 0; npp < numPages; npp++)
-                if (table.pages[npp].status == Page.EMPTY) break;
+                if (table.pages[npp].status == Page.Status.EMPTY) break;
 
             numEmptyPages--;			// Уменьшимть число доступных страниц
             setPage(process, vpg, npp);		// Установка виртуальной страницы на найденную
@@ -429,7 +427,7 @@ public class OSSimulator implements Runnable {
                     freeGlobal();	// страницы из множества всех задач
             // Поиск первой свободной страницы
             for (npp = 0; npp < numPages; npp++)
-                if (table.pages[npp].status == Page.FREE) break;
+                if (table.pages[npp].status == Page.Status.FREE) break;
 
             numFreePages--;			// Уменьшить число свободных страниц
             setPage(process, vpg, npp);		// Установка виртуальной страницы на найденную свободную
@@ -445,7 +443,7 @@ public class OSSimulator implements Runnable {
         table.pages[npp].nProcess = processes.indexOf(process);		// Установить номер задачи и виртуальной
         table.pages[npp].nPage = nvp;		// страницы в таблице физическихз страниц
         table.pages[npp].loadTime = systemTime;		// Установить время обращения
-        table.pages[npp].status = Page.PRIVATE;	// Состояние физической страницы - ЗАНЯТА
+        table.pages[npp].status = Page.Status.PRIVATE;	// Состояние физической страницы - ЗАНЯТА
     }
 
     private void diskQueueIn(Process p, int operation, int pp) {
@@ -484,8 +482,8 @@ public class OSSimulator implements Runnable {
         int	i = -1, pp;			// всех задач, загруженнм в память,
         t = 10000000;				// то есть по физической памяти
         for (pp = 0; pp < numPages; pp++) {
-            if (table.pages[pp].status == Page.PRIVATE)	// Страница памяти в состоянии ЗАНЯТА
-            switch	(nAlgorithm) {
+            if (table.pages[pp].status == Page.Status.PRIVATE)	// Страница памяти в состоянии ЗАНЯТА
+            switch (nAlgorithm) {
                 case globalLRU : // LRU - поиск по минимальному времени последнего обращения
                     if (table.pages[pp].callTime < t) {
                         i = pp;
