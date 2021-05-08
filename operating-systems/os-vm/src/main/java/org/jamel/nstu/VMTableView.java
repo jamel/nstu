@@ -1,6 +1,8 @@
+package org.jamel.nstu;
+
 import java.awt.*;
-import java.awt.geom.*;
-import java.util.*;
+import java.awt.geom.CubicCurve2D;
+import java.util.ArrayList;
 
 /**
  * Created by IntelliJ IDEA.

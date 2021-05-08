@@ -1,7 +1,8 @@
-import sun.awt.VerticalBagLayout;
+package org.jamel.nstu;
+
+import java.awt.*;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Created by IntelliJ IDEA.

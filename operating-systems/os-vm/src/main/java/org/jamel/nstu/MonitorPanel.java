@@ -1,8 +1,10 @@
+package org.jamel.nstu;
+
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;

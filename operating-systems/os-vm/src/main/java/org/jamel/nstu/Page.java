@@ -1,3 +1,5 @@
+package org.jamel.nstu;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Root

@@ -1,5 +1,8 @@
-import java.util.*;
-import java.lang.*;
+package org.jamel.nstu;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 //import java.lang.*;
 //import java.lang.Process;
 

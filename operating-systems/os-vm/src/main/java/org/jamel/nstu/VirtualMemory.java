@@ -1,6 +1,9 @@
-import javax.swing.*;
+package org.jamel.nstu;
+
 import java.awt.*;
-import java.lang.reflect.Constructor;
+import java.util.Objects;
+
+import javax.swing.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,7 +32,7 @@ public class VirtualMemory {
     }
 
     public void createSplashScreen() {
-        splashLabel = new JLabel(new ImageIcon(getClass().getResource("/resources/images/hello.jpg")));
+        splashLabel = new JLabel(new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/hello.jpg"))));
         splashScreen = new JWindow();
         splashScreen.getContentPane().add(splashLabel);
         splashScreen.pack();

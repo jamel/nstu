@@ -1,9 +1,18 @@
+package org.jamel.nstu;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.table.AbstractTableModel;
-import java.awt.event.*;
-import java.awt.*;
-import java.io.*;
 
 public class ResultsDialog extends JDialog {
     private JPanel contentPane;

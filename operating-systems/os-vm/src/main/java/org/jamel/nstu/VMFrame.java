@@ -1,6 +1,10 @@
-import javax.swing.*;
+package org.jamel.nstu;
+
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.util.Objects;
+
+import javax.swing.*;
 
 
 /**
@@ -37,7 +41,7 @@ public class VMFrame extends JFrame implements Runnable{
         Action a;
         JToolBar toolBar = new JToolBar(JToolBar.HORIZONTAL);
         toolBar.add(a = new AbstractAction("Параметры модели",
-                new ImageIcon(getClass().getResource("/resources/images/settings.gif"))) {
+                new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/settings.gif")))) {
             public void actionPerformed(ActionEvent e) {
                 stop();
                 if (initModelDlg.doModal()) {
@@ -53,7 +57,7 @@ public class VMFrame extends JFrame implements Runnable{
         toolBar.addSeparator();
 
         toolBar.add(a = new AbstractAction("Запуск моделирования",
-                new ImageIcon(getClass().getResource("/resources/images/execute.gif"))) {
+                new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/execute.gif")))) {
             public void actionPerformed(ActionEvent e) {
                 start();
             }
@@ -61,7 +65,7 @@ public class VMFrame extends JFrame implements Runnable{
         a.putValue(Action.SHORT_DESCRIPTION, a.getValue(Action.NAME));
 
         toolBar.add(a = new AbstractAction("Один шаг моделирования",
-                new ImageIcon(getClass().getResource("/resources/images/step.gif"))) {
+                new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/step.gif")))) {
             public void actionPerformed(ActionEvent e) {
                 step();
             }
@@ -69,7 +73,7 @@ public class VMFrame extends JFrame implements Runnable{
         a.putValue(Action.SHORT_DESCRIPTION, a.getValue(Action.NAME));
 
         toolBar.add(a = new AbstractAction("Приостановка моделирования",
-                new ImageIcon(getClass().getResource("/resources/images/pause.gif"))) {
+                new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/pause.gif")))) {
             public void actionPerformed(ActionEvent e) {
                 stop();
             }
@@ -78,7 +82,7 @@ public class VMFrame extends JFrame implements Runnable{
 
         toolBar.addSeparator();
         toolBar.add(a = new AbstractAction("Результаты моделирования",
-                new ImageIcon(getClass().getResource("/resources/images/results.gif"))) {
+                new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/results.gif")))) {
             public void actionPerformed(ActionEvent e) {
                 stop();
                 resDialog.setVisible(true);
@@ -88,7 +92,7 @@ public class VMFrame extends JFrame implements Runnable{
 
         toolBar.addSeparator();
         toolBar.add(a = new AbstractAction("О программе",
-                new ImageIcon(getClass().getResource("/resources/images/about.gif"))) {
+                new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/about.gif")))) {
             public void actionPerformed(ActionEvent e) {
                 aboutDialog.setVisible(true);
             }
