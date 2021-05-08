@@ -1,7 +1,6 @@
 package org.jamel.nstu;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -46,23 +45,14 @@ public class ResultsDialog extends JDialog {
         this.simulator = simul;
         table.setModel(new ProcessesTable());
 
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
-
-        buttonSave.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onSave();
-            }
-        });
+        buttonCancel.addActionListener(this::onCancel);
+        buttonSave.addActionListener(this::onSave);
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                onCancel();
+                onCancel(null);
             }
 
             public void windowActivated(WindowEvent e) {
@@ -93,30 +83,27 @@ public class ResultsDialog extends JDialog {
         });
 
         // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        contentPane.registerKeyboardAction(
+            this::onCancel,
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
+            JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onCancel() {
+    private void onCancel(ActionEvent e) {
         // add your code here if necessary
         dispose();
     }
 
-    private void onSave() {
+    private void onSave(ActionEvent e) {
         chooser.setFileFilter(new TxtFilter());
         int result = chooser.showDialog(this, "Сохранить");
         if (result == JFileChooser.APPROVE_OPTION) {
             String filename = chooser.getSelectedFile().getPath();
-            PrintWriter out = null;
-            try {
-                out = new PrintWriter(new FileWriter(filename));
+            try (PrintWriter out = new PrintWriter(new FileWriter(filename))) {
                 out.print("Количество задач               ");
                 out.println(simulator.processes.size());
                 out.print("Всего страниц вирт. памяти     ");
-                out.println(countVirtMem);                
+                out.println(countVirtMem);
                 out.print("Количество страниц памяти      ");
                 out.println(simulator.numPages);
                 out.print("Время неиспользования страницы ");
@@ -151,12 +138,11 @@ public class ResultsDialog extends JDialog {
                 out.println(simulator.VTSK + " %");
                 out.print("Страничные сбои                ");
                 out.println(simulator.VMEM + " %");
-            } catch(IOException e) {
-                JOptionPane.showMessageDialog(this, "При записи данных в файл произошла ошибка",
-                        "Ошибка", JOptionPane.ERROR_MESSAGE);
-            }
-            finally {
-                if (out != null) out.close();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(
+                    this,
+                    "При записи данных в файл произошла ошибка: " + ex.getMessage(),
+                    "Ошибка", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -170,10 +156,12 @@ public class ResultsDialog extends JDialog {
     private int countVirtMem;
     private JFileChooser chooser = new JFileChooser(new File("."));
     private String[] columns = {"№", "Имя задачи", "Количество страниц"};
-    private String[] algorithms  = {"LRU локальный","FIFO локальный",
-                                    "LRU глобальный","FIFO глобальный"};
+    private String[] algorithms = {
+        "LRU локальный", "FIFO локальный",
+        "LRU глобальный", "FIFO глобальный"
+    };
 
-    private class TxtFilter extends FileFilter {
+    private static class TxtFilter extends FileFilter {
         public boolean accept(File pathname) {
             return pathname.getName().toLowerCase().endsWith(".txt");
         }

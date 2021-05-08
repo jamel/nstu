@@ -1,15 +1,11 @@
 package org.jamel.nstu;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 /**
  * Created by IntelliJ IDEA.
@@ -77,7 +73,6 @@ public class StatusPanel extends JPanel {
             diskInterval.setText(String.valueOf(simulator.diskInterval));
         }
 
-
         private JLabel numPages = new JLabel("0");
         private JLabel freePages = new JLabel("0");
         private JLabel emptyPages = new JLabel("0");
@@ -93,11 +88,9 @@ public class StatusPanel extends JPanel {
             setLayout(new BorderLayout());
 
             processes = new JComboBox();
-            processes.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    currSelectedProcess = processes.getSelectedIndex();
-                    step();
-                }
+            processes.addActionListener(e -> {
+                currSelectedProcess = processes.getSelectedIndex();
+                step();
             });
 
             JPanel panel1 = new JPanel(new GridLayout(0, 1));
@@ -170,7 +163,7 @@ public class StatusPanel extends JPanel {
         private JLabel time = new JLabel("0");
     }
 
-    private class SpeedPanel extends JPanel {
+    private static class SpeedPanel extends JPanel {
         public SpeedPanel() {
             setBorder(new TitledBorder(new EtchedBorder(), "Тормозистор"));
 
@@ -179,11 +172,7 @@ public class StatusPanel extends JPanel {
             slider.setMinorTickSpacing(5);
             slider.setPaintTicks(true);
             slider.setPaintLabels(true);
-            slider.addChangeListener(new ChangeListener() {
-                public void stateChanged(ChangeEvent e) {
-                    simulator.sleepTime = slider.getValue() + 1;
-                }
-            });
+            slider.addChangeListener(e -> OSSimulator.sleepTime = slider.getValue() + 1);
 
             add(slider);
         }

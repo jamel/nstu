@@ -2,7 +2,6 @@ package org.jamel.nstu;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -31,11 +30,7 @@ public class AboutDialog extends JDialog {
             }
         });
 
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
+        buttonOK.addActionListener(this::onOK);
 
         sourceCodeLink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         sourceCodeLink.addMouseListener(new MouseAdapter() {
@@ -52,7 +47,7 @@ public class AboutDialog extends JDialog {
         });
     }
 
-    private void onOK() {
+    private void onOK(ActionEvent e) {
         // add your code here
         dispose();
     }

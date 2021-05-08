@@ -2,7 +2,6 @@ package org.jamel.nstu;
 
 import java.awt.*;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.LinkedList;
 
 import javax.swing.*;
@@ -23,23 +22,19 @@ public class ProcessesPanel extends JPanel {
 
         JPanel panel = new JPanel();
         panel.add(new JLabel("Расположение в системе:"));
-        panel.add(location = new JComboBox(new Object[] {
+        panel.add(location = new JComboBox<>(new String[] {
                 "Все процессы",
                 "Очередь менеджера",
                 "Очередь диска"
         }));
-        location.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent e) {
-                step();
-            }
-        });
+        location.addItemListener(this::step);
         add(panel, BorderLayout.NORTH);
 
         table = new JTable(new ProcessesTable());
         add(new JScrollPane(table), BorderLayout.CENTER);
     }
 
-    public void step() {
+    public void step(ItemEvent e) {
         table.tableChanged(new TableModelEvent(new ProcessesTable()));
     }
 
@@ -47,8 +42,9 @@ public class ProcessesPanel extends JPanel {
     private JTable table;
     private JComboBox location;
 
-    private String[] columns = {"№", "Имя задачи", "Количество страниц",
-            "Состояние", "Активное время",  "Текущий РН", "Старый РН"
+    private String[] columns = {
+        "№", "Имя задачи", "Количество страниц",
+        "Состояние", "Активное время",  "Текущий РН", "Старый РН"
     };
 
     private class ProcessesTable extends AbstractTableModel {

@@ -103,7 +103,7 @@ public class VMFrame extends JFrame implements Runnable{
 
     public void step() {
         simulator.step();
-        processStatPanel.step();
+        processStatPanel.step(null);
         memoryStatPanel.step();
         statusPanel.step();
         vmPanel.repaint();
@@ -115,7 +115,7 @@ public class VMFrame extends JFrame implements Runnable{
         while (me == thread) {
             step();
             try {
-                Thread.sleep(simulator.sleepTime);
+                Thread.sleep(OSSimulator.sleepTime);
             }
             catch (InterruptedException e) {
                 break;

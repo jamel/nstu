@@ -16,9 +16,8 @@ import javax.swing.*;
  * Date: 15.05.2007
  * Time: 12:24:14
  */
-public class VMPanel extends JPanel
-        implements MouseListener, MouseMotionListener
-{
+public class VMPanel extends JPanel implements MouseListener, MouseMotionListener {
+
     public VMPanel(VMTableView table, ArrayList<ProcessView> processes) {
         this.table = table;
         this.processes =  processes;
@@ -107,9 +106,7 @@ public class VMPanel extends JPanel
     private Graphics2D bufGraphics;
     private Dimension bufSize;
 
-
     public void mouseClicked(MouseEvent e) {
-
     }
 
     public void mousePressed(MouseEvent e) {
@@ -158,6 +155,5 @@ public class VMPanel extends JPanel
     }
 
     public void mouseMoved(MouseEvent e) {
-
     }
 }

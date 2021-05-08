@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * Класс графического представления таблицы виртуальной памяти
  */
 public class VMTableView extends VMTable {
+
     public VMTableView(VMTable table) {
         super(table);
     }
@@ -20,7 +21,6 @@ public class VMTableView extends VMTable {
     public VMTableView(int numPages) {
         super(numPages);
     }
-
 
     public void resize() {
         pageHeight = TABLE_HEIGHT / numPages;
@@ -71,11 +71,7 @@ public class VMTableView extends VMTable {
         g.drawString("Физическая память", x1 + TABLE_WIDTH/2 - w/2, y2 + h);
     }
 
-
     private void drawArrowLeft(Graphics2D g, int x1, int y1, int x2, int y2) {
-        /*bufGraphics.drawLine(x1, y1, x1 + 20, y1);
-        bufGraphics.drawLine(x1 + 20, y1, x2 - 20, y2);
-        bufGraphics.drawLine(x2 - 20, y2, x2, y2);*/
         CubicCurve2D curve = new CubicCurve2D.Float(x1, y1, x1+100, y1,
                 x2-100, y2, x2, y2);
         g.draw(curve);
@@ -84,9 +80,6 @@ public class VMTableView extends VMTable {
     }
 
     private void drawArrowRight(Graphics2D g, int x1, int y1, int x2, int y2) {
-        /*bufGraphics.drawLine(x1, y1, x1 - 20, y1);
-        bufGraphics.drawLine(x1 - 20, y1, x2 + 20, y2);
-        bufGraphics.drawLine(x2 + 20, y2, x2, y2);*/
         CubicCurve2D curve = new CubicCurve2D.Float(x1, y1, x1-100, y1,
                 x2+100, y2, x2, y2);
         g.draw(curve);

@@ -15,19 +15,14 @@ import javax.swing.*;
 public class VirtualMemory {
     public VirtualMemory() {
         createSplashScreen();
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                splashScreen.setVisible(true);
-            }
-        });
+        SwingUtilities.invokeLater(() -> splashScreen.setVisible(true));
+
         final VMFrame frame = new VMFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                frame.setVisible(true);
-                hideSplashScreen();
-            }
+        SwingUtilities.invokeLater(() -> {
+            frame.setVisible(true);
+            hideSplashScreen();
         });
     }
 
@@ -38,8 +33,8 @@ public class VirtualMemory {
         splashScreen.pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         splashScreen.setLocation(
-         screenSize.width/2 - splashScreen.getSize().width/2,
-         screenSize.height/2 - splashScreen.getSize().height/2);
+            screenSize.width/2 - splashScreen.getSize().width/2,
+            screenSize.height/2 - splashScreen.getSize().height/2);
     }
 
     public void hideSplashScreen() {
@@ -48,10 +43,8 @@ public class VirtualMemory {
         splashLabel = null;
     }
 
-
     private JLabel splashLabel;
     private JWindow splashScreen;
-
 
     public static void main(String[] args) {
         new VirtualMemory();

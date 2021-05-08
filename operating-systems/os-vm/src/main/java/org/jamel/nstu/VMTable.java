@@ -8,6 +8,7 @@ package org.jamel.nstu;
  * To change this template use File | Settings | File Templates.
  */
 public class VMTable {
+
     public VMTable(VMTable table) {
         numPages = table.numPages;
         pages = new Page[numPages];

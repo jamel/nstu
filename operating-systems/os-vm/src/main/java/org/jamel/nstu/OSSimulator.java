@@ -15,9 +15,9 @@ import java.util.Queue;
  */
 public class OSSimulator implements Runnable {
     public OSSimulator() {
-        processes = new ArrayList<ProcessView>(numProcesses);
+        processes = new ArrayList<>(numProcesses);
         table = new VMTableView(numPages);
-        table.processes = processes;
+        VMTableView.processes = processes;
     }
 
     public void start() {
@@ -34,7 +34,6 @@ public class OSSimulator implements Runnable {
     }
 
     public void reset() {
-
     }
 
     public void run() {
@@ -54,8 +53,8 @@ public class OSSimulator implements Runnable {
         numPages = nPages;
         numProcesses = nProcesses;
         // Сброс очередей
-        diskQueue = new LinkedList<ProcessView>();
-        managerQueue = new LinkedList<ProcessView>();
+        diskQueue = new LinkedList<>();
+        managerQueue = new LinkedList<>();
 
         // Сброс модельного времени
         systemTime = 0;
@@ -110,8 +109,8 @@ public class OSSimulator implements Runnable {
             return;
 
         // Сброс очередей
-        diskQueue = new LinkedList<ProcessView>();
-        managerQueue = new LinkedList<ProcessView>();
+        diskQueue = new LinkedList<>();
+        managerQueue = new LinkedList<>();
 
         // Сброс модельного времени
         systemTime = 0;

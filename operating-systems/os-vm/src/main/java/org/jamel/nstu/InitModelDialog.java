@@ -1,7 +1,6 @@
 package org.jamel.nstu;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -40,8 +39,9 @@ public class InitModelDialog extends JDialog {
 
         table.setModel(new ProcessesTable());
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        for (String alg : algorithms)
+        for (String alg : algorithms) {
             algorithm.addItem(alg);
+        }
 
         pageTime.setModel(new SpinnerNumberModel(70, 50, 400, 10));
         numPages.setModel(new SpinnerNumberModel(30, 10, 70, 1));
@@ -53,70 +53,55 @@ public class InitModelDialog extends JDialog {
         memoryInterval.setModel(new SpinnerNumberModel(50, 40, 200, 10));
         workSetInterval.setModel(new SpinnerNumberModel(30, 30, 180, 10));
 
-        insertProcess.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (newProcDlg == null)
-                    newProcDlg = new NewProcessDialog();
-                if (newProcDlg.doModal()) {
-                    for (ProcessView p: processes)
-                        if (p.label.equals(newProcDlg.getProcessName())) {
-                            JOptionPane.showMessageDialog(InitModelDialog.this, "Задача с таким именем уже существует",
-                                    "Ошибка", JOptionPane.ERROR_MESSAGE);
-                            return;
-                        }
-                    processes.add(new ProcessView(newProcDlg.getProcessName(), newProcDlg.getnPages()));
-                    table.tableChanged(new TableModelEvent(new ProcessesTable()));
-                }
-            }
-        });
-
-        removeProcess.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int proc = table.getSelectedRowCount();
-                if (proc != -1) {
-                    processes.remove(proc);
-                    table.tableChanged(new TableModelEvent(new ProcessesTable()));
-                }
-            }
-        });
-
-        removeAll.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                processes.clear();
+        insertProcess.addActionListener(e -> {
+            if (newProcDlg == null)
+                newProcDlg = new NewProcessDialog();
+            if (newProcDlg.doModal()) {
+                for (ProcessView p: processes)
+                    if (p.label.equals(newProcDlg.getProcessName())) {
+                        JOptionPane.showMessageDialog(InitModelDialog.this, "Задача с таким именем уже существует",
+                                "Ошибка", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                processes.add(new ProcessView(newProcDlg.getProcessName(), newProcDlg.getnPages()));
                 table.tableChanged(new TableModelEvent(new ProcessesTable()));
-                NewProcessDialog.count = 0;
             }
         });
 
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
+        removeProcess.addActionListener(e -> {
+            int proc = table.getSelectedRowCount();
+            if (proc != -1) {
+                processes.remove(proc);
+                table.tableChanged(new TableModelEvent(new ProcessesTable()));
             }
         });
 
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
+        removeAll.addActionListener(e -> {
+            processes.clear();
+            table.tableChanged(new TableModelEvent(new ProcessesTable()));
+            NewProcessDialog.count = 0;
         });
+
+        buttonOK.addActionListener(this::onOK);
+
+        buttonCancel.addActionListener(this::onCancel);
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                onCancel();
+                onCancel(null);
             }
         });
 
         // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        contentPane.registerKeyboardAction(
+            this::onCancel,
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
+            JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onOK() {
+    private void onOK(ActionEvent e) {
         // add your code here
         if (processes.size() == 0)
             JOptionPane.showMessageDialog(this, "Вы не создали ни одного процесса",
@@ -127,7 +112,7 @@ public class InitModelDialog extends JDialog {
         }
     }
 
-    private void onCancel() {
+    private void onCancel(ActionEvent e) {
         // add your code here if necessary
         dispose();
     }
@@ -182,14 +167,15 @@ public class InitModelDialog extends JDialog {
         return algorithm.getSelectedIndex();
     }
 
-
     private boolean ok;
-    private String[] algorithms  = {"LRU локальный","FIFO локальный",
-                                    "LRU глобальный","FIFO глобальный"};
-    private ArrayList<ProcessView> processes = new ArrayList<ProcessView>(5);
+    private String[] algorithms = {
+        "LRU локальный","FIFO локальный",
+        "LRU глобальный","FIFO глобальный"
+    };
+    private final ArrayList<ProcessView> processes = new ArrayList<>(5);
     NewProcessDialog newProcDlg;
 
-    private String[] columns = {"№", "Имя задачи", "Количество страниц"};
+    private final String[] columns = {"№", "Имя задачи", "Количество страниц"};
 
     private class ProcessesTable extends AbstractTableModel {
         public int getRowCount() {

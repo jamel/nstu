@@ -44,7 +44,6 @@ public class MonitorPanel extends JPanel {
         private String maxValueString;
         private String curValueString;
 
-
         public Surface(int maxValue, String maxValueString, String curValueString) {
             this.maxValue = maxValue;
             this.maxValueString = maxValueString;
@@ -79,7 +78,6 @@ public class MonitorPanel extends JPanel {
         public void setMaxValueString(String maxValueString) {
             this.maxValueString = maxValueString;
         }
-
             
         public void paint(Graphics g) {
             Dimension d = getSize();
@@ -195,19 +193,16 @@ public class MonitorPanel extends JPanel {
             g.drawImage(bimg, 0, 0, this);
         }
 
-
         public void start() {
             thread = new Thread(this);
             thread.setPriority(Thread.MIN_PRIORITY);
             thread.start();
         }
 
-
         public synchronized void stop() {
             thread = null;
             notify();
         }
-
 
         public void run() {
 
